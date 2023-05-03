@@ -26,7 +26,7 @@ func main() {
 		logger.Println(ErrUnexpectedParallelValue)
 		os.Exit(1)
 	}
-	// parse addresses
+	// parse url addresses
 	addresses = flag.Args()
 	crw := crawler.NewService(logger)
 
@@ -86,8 +86,7 @@ func getResponses(
 	var group errgroup.Group
 	group.SetLimit(maxParallel)
 	for i := range addresses {
-		// copy of address that's safe to use concurrently
-		adr := addresses[i]
+		adr := addresses[i] // copy of address that's safe to use concurrently
 		group.Go(func() error {
 			resp, err := crw.CrawlURL(ctx, adr)
 			if err != nil {
