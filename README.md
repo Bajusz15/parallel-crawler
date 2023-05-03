@@ -5,6 +5,7 @@ This tool makes a request to the given url(s) and prints the md5 hash of the
 response body along with the formatted url address.
 
 The tool uses fan-out and fan-in pattern to send out the requests then "collect" the responses.
+It utilizes waitgroups, goroutines and channels to achieve this.
 
 ## Usage of the tool
 `./myhttp -parallel [number of parallel requests (number)] [address1] [address2] [...]`
