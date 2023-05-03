@@ -35,14 +35,16 @@ func Test_parallelCrawl(t *testing.T) {
 		wantErr bool
 	}{
 		{
-			name:  "no error",
-			crw:   mc,
-			addrs: []string{"twitter.com"},
+			name:    "no error",
+			crw:     mc,
+			addrs:   []string{"twitter.com"},
+			wantErr: false,
 		},
 		{
-			name:  "crawler returns error",
-			crw:   mc,
-			addrs: []string{"twitter.com", "mock"},
+			name:    "crawler returns error",
+			crw:     mc,
+			addrs:   []string{"twitter.com", "mock"},
+			wantErr: true,
 		},
 	}
 	for _, tt := range tests {
